@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "TestTask2",
+      "setup": "",
+      "run": "DOTNET_CLI_HOME=/tmp/ DOTNET_NOLOGO=true dotnet test --filter TestTaskTwo",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "TestTask3",
+      "setup": "",
+      "run": "DOTNET_CLI_HOME=/tmp/ DOTNET_NOLOGO=true dotnet test --filter TestTaskThree",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    },
+    {
+      "name": "TestTask4",
+      "setup": "",
+      "run": "DOTNET_CLI_HOME=/tmp/ DOTNET_NOLOGO=true dotnet test --filter TestTaskFour",
+      "input": "",
+      "output": "",
+      "comparison": "included",
+      "timeout": 10,
+      "points": 1
+    }
+  ]
+}
