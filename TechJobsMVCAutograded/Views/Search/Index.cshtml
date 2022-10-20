@@ -1,0 +1,33 @@
+﻿<div class="container body-content">
+
+    <h1>@ViewBag.title</h1>
+
+    <form action="/search/results" method="post">
+        <h2>Search by:</h2>
+
+        <p>
+            @foreach (var column in ViewBag.columns)
+            {
+                <span>
+                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@column.Key == 'all'" />
+                    <label for="@column.Key">@column.Value</label>
+                </span>
+            }
+
+        </p>
+
+        <p>
+            <label for="searchTerm">Keyword:</label>
+            <input type="text" name="searchTerm" id="searchTerm" />
+        </p>
+
+        <input type="submit" value="Search" />
+    </form>
+
+    <hr />
+
+    @* TODO #4 - Loop over the search results to display all job fields. *@
+    
+
+
+</div>
