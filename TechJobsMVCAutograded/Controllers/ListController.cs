@@ -44,6 +44,15 @@ namespace TechJobsMVCAutograded.Controllers
         // TODO #2 - Complete the Jobs action method
         public IActionResult Jobs(string column, string value)
         { 
+            if (column == "all" && value == "view all")
+            {
+                ViewBag.jobs = new List<Job>(JobData.FindAll());
+                ViewBag.title = "Results for view all";
+            } else
+            {
+                ViewBag.jobs = new List<Job>(JobData.FindByColumnAndValue(column, value));
+                ViewBag.title = $"Results for jobs with {ColumnChoices[column]}, '{value}'";
+            }
             return View();
         }
     }
