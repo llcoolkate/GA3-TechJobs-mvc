@@ -34,7 +34,7 @@ namespace TechJobsMVCAutograded.Controllers
             {
                 ViewBag.jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
             }
-            ViewBag.title = $"Search by {ViewBag.columns[searchType]} for: '{searchTerm}'";
+            ViewBag.title = $"Search by {ViewBag.columns[searchType]} with keyword: '{searchTerm}'";
             ViewBag.columns = ListController.ColumnChoices;
             ViewBag.searchTerm = searchTerm;
             ViewBag.searchType = searchType;
