@@ -15,7 +15,7 @@ namespace AutogradingTests
         {
         }
 
-        /*
+        
 
         // Test that Results method exists and returns a view.
         [Fact]
@@ -41,6 +41,6 @@ namespace AutogradingTests
             Assert.Equal(expected, jobs.Count);
         }
 
-        */
+        
     }
 }
