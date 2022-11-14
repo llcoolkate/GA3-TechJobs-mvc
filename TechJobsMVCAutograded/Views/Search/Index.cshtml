@@ -9,7 +9,7 @@
             @foreach (var column in ViewBag.columns)
             {
                 <span>
-                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" checked="@column.Key == 'all'" />
+                    <input type="radio" name="searchType" id="@column.Key" value="@column.Key" @(column.Key == "all" || column.Key == ViewBag.searType ? "checked" : null)/>
                     <label for="@column.Key">@column.Value</label>
                 </span>
             }
@@ -18,7 +18,7 @@
 
         <p>
             <label for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" />
+            <input type="text" name="searchTerm" id="searchTerm"  value="@ViewBag.searchTerm"/>
         </p>
 
         <input type="submit" value="Search" />
@@ -28,33 +28,34 @@
 
     @* TODO #4 - Loop over the search results to display all job fields. *@
     @if(ViewBag.jobs != null) {
+        <h1>Search Results</h1>
         @foreach (var job in ViewBag.jobs)
     {
-        <table class="job-listing">
-        <tr>
-            <th>ID</th>
-            <td>@job.Id</td>
-        </tr>
-        <tr>
-            <th>Name</th>
-            <td>@job.Name</td>
-        </tr>
-        <tr>
-            <th>Employer</th>
-            <td>@job.Employer</td>
-        </tr>
-        <tr>
-            <th>Location</th>
-            <td>@job.Location</td>
-        </tr>
-        <tr>
-            <th>Position Type</th>
-            <td>@job.PositionType</td>
-        </tr>
-        <tr>
-            <th>Core Competency</th>
-            <td>@job.CoreCompetency</td>
-        </tr>
+        <table class="job-listing">   
+            <tr>
+                <th>ID</th>
+                <td>@job.Id</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>@job.Name</td>
+            </tr>
+            <tr>
+                <th>Employer</th>
+                <td>@job.Employer</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>@job.Location</td>
+            </tr>
+            <tr>
+                <th>Position Type</th>
+                <td>@job.PositionType</td>
+            </tr>
+            <tr>
+                <th>Core Competency</th>
+                <td>@job.CoreCompetency</td>
+            </tr>
     </table>
     }
     }

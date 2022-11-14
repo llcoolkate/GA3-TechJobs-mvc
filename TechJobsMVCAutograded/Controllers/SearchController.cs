@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging.Abstractions;
 using TechJobsMVCAutograded.Data;
 using TechJobsMVCAutograded.Models;
 
@@ -16,8 +17,7 @@ namespace TechJobsMVCAutograded.Controllers
         public IActionResult Index()
         {
             ViewBag.columns = ListController.ColumnChoices;
-            ViewBag.jobs = new List<Job>();
-            
+            //ViewBag.jobs = new List<Job>();
             return View();
         }
 
@@ -25,23 +25,33 @@ namespace TechJobsMVCAutograded.Controllers
         [HttpPost]
         public IActionResult Results(string searchType, string searchTerm)
         {
-            ViewBag.jobs = new List<Job>();
-            if(searchTerm == "all" || searchTerm == string.Empty)
-            {
-                ViewBag.jobs = JobData.FindAll();
+            //ViewBag.jobs = new List<Job>();
+            //if(searchTerm == "all" || searchTerm == string.Empty)
+            //{
+            //    ViewBag.jobs = JobData.FindAll();
+            //}
+            //else
+            //{
+            //    ViewBag.jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
+            //}
+            //ViewBag.title = $"Search by {ViewBag.columns[searchType]} with keyword: '{searchTerm}'";
+            //ViewBag.columns = ListController.ColumnChoices;
+            //ViewBag.searchTerm = searchTerm;
+            //ViewBag.searchType = searchType;
+            List<Job> jobs = new List<Job>();
+            if (searchTerm == null || searchTerm == "") {
+                jobs = JobData.FindAll();
             }
             else
             {
-                ViewBag.jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
+                jobs = JobData.FindByColumnAndValue(searchType, searchTerm);
             }
-            ViewBag.title = $"Search by {ViewBag.columns[searchType]} with keyword: '{searchTerm}'";
+            ViewBag.jobs = jobs;
             ViewBag.columns = ListController.ColumnChoices;
-            ViewBag.searchTerm = searchTerm;
-            ViewBag.searchType = searchType;
             return View("Index");
         }
-    
-    
+
+
     }
 
 }
